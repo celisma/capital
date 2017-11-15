@@ -10,5 +10,10 @@
   <%= @role.detail %>
 </p>
 
+<p>
+  <strong>Department:</strong>
+  <%= Department.find(@role.department_id).name %>
+</p>
+
 <%= link_to 'Edit', edit_role_path(@role) %> |
 <%= link_to 'Back', roles_path %>
