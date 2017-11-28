@@ -1,0 +1,62 @@
+<%= form_with(model: person, local: true) do |form| %>
+  <% if person.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(person.errors.count, "error") %> prohibited this person from being saved:</h2>
+
+      <ul>
+      <% person.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :last_name %>
+    <%= form.text_area :last_name, id: :person_last_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_area :name, id: :person_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address, id: :person_address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dni %>
+    <%= form.text_field :dni, id: :person_dni %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone %>
+    <%= form.text_field :phone, id: :person_phone %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email, id: :person_email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :civil_status %>
+    <%= form.text_field :civil_status, id: :person_civil_status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Department %>
+    <%= form.collection_select :department_id, Department.order(:name), :id, :name,include_blank:true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Role %>
+    <%= form.collection_select :role_id, Role.order(:name), :id, :name,include_blank:true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -10,6 +10,7 @@ class RolesController < ApplicationController
   # GET /roles/1
   # GET /roles/1.json
   def show
+    @roles = Role.find(params[:id])
   end
 
   # GET /roles/new
@@ -19,6 +20,7 @@ class RolesController < ApplicationController
 
   # GET /roles/1/edit
   def edit
+    @role = Role.find(params[:id])
   end
 
   # POST /roles
@@ -69,6 +71,6 @@ class RolesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def role_params
-      params.require(:role).permit(:name, :detail, :department_id)
+      params.require(:role).permit(:name, :detail, :department_id, :person_id)
     end
 end
